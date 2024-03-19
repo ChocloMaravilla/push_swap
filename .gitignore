@@ -1,0 +1,8 @@
+push_swap_test.sh
+*.o
+*.gch
+*.ghc
+checker_Mac
+a.out
+pro_checker
+push_swap
