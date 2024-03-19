@@ -6,35 +6,30 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:00:19 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/15 18:56:35 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/19 21:52:50 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Esta función cuenta el número de filas necesarias 
-// para representar un número en binario.
-// Se desplaza el número hacia la derecha hasta 
-// que no quedan bits para desplazar y se cuenta
-// el número de veces que se ha realizado el desplazamiento.
-int is_Max_int(char **argv, int argc)
-{
-	long	buffer;
-	int		count;
+// int is_Max_int(char **argv, int argc)
+// {
+// 	long	buffer;
+// 	int		count;
 
-	count = 1;
-	while (count < argc)
-	{
-		buffer = ft_atoi(argv[count - 1]);
-		if (buffer > 2147483647)
-		{
-			write(2, "Error\n", 6);
-			return (ERROR);
-		}
-		count++;
-	}
-	return (EQUAL);
-}
+// 	count = 1;
+// 	while (count < argc)
+// 	{
+// 		buffer = ft_atoi(argv[count - 1]);
+// 		if (buffer > 2147483647)
+// 		{
+// 			write(2, "Error\n", 6);
+// 			return (ERROR);
+// 		}
+// 		count++;
+// 	}
+// 	return (EQUAL);
+// }
 int	count_bit_rows(int num_count)
 {
 	int	row_count;
@@ -101,11 +96,6 @@ void	*push_swap(int argc, char *argv[])
 
 	first_node_a = NULL;
 	first_node_b = NULL;
-	if(is_Max_int(argv, argc) == ERROR)
-		{
-			printf("HOLA");
-			return NULL;
-		}
 	if (!argv || argc < 2)
 		return (NULL);
 	boolean = fill_lista(argc, argv, &first_node_a);
@@ -119,6 +109,8 @@ void	*push_swap(int argc, char *argv[])
 	fill_index(first_node_a);
 	fill_index(first_node_b);
 	radix_algorithm(&first_node_a, &first_node_b, argc - 1, argc);
+	// print_list(&first_node_a, "STACK_A");
+	// print_list(&first_node_b, "STACK_B");
 	free_elements_stack(&first_node_a);
 	return (NULL);
 }
@@ -128,4 +120,17 @@ int	main(int argc, char **argv )
 	push_swap(argc, argv);
 
 	return (0);
+}
+
+
+
+// //FUNCIONES PARA BORRAR SON DE TESTEO--------------->
+void print_list(t_stack **list, char *name_list)
+{
+	t_stack *lists = *list;
+	while (lists != NULL)
+	{
+		printf("\n%s: %i\n", name_list, lists->value);
+		lists = lists->next;
+	}
 }

@@ -6,18 +6,12 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:24:29 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/15 17:47:39 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:10:19 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Esta función asigna índices a los nodos de una 
-// pila enlazada, donde el índice de un nodo
-// representa la cantidad de nodos con valores menores que 
-// el valor del nodo actual en la pila.
-// Esto se hace recorriendo la lista y contando 
-// los nodos con valores menores.
 void	fill_index(t_stack *list)
 {
 	t_stack	*cursor;
@@ -40,15 +34,6 @@ void	fill_index(t_stack *list)
 	}
 }
 
-// Esta función crea nodos de tipo t_stack y 
-// los añade a una lista enlazada, asignando
-// valores desde un arreglo de cadenas de caracteres. 
-// Para cada argumento en el arreglo argv,
-// se crea un nuevo nodo, se comprueba si hay duplicados 
-// utilizando ft_isdupli, y se añade
-// el nodo a la lista utilizando la función creation_node. 
-// Finalmente, se llama a parse_stack
-// para asignar índices y valores a cada nodo.
 int	fill_lista(int argc, char **argv, t_stack **lista)
 {
 	int		count;
@@ -74,9 +59,6 @@ int	fill_lista(int argc, char **argv, t_stack **lista)
 	return (SUCCESS);
 }
 
-// Esta función comprueba si una lista enlazada
-// de tipo t_stack está ordenada de forma
-// ascendente según los valores de los nodos.
 int	its_sorted(t_stack **lista)
 {
 	t_stack	*next;
@@ -110,17 +92,36 @@ int is_char(int count, char **argv)
 	i = 0;
 	if(argv[count][i] == '\0')
 		return (ERROR);
-	// if(ft_atoi(argv[count]) > 2147483646)
-	// 	return (ERROR);
 	while (argv[count][i])
 	{
-		// if((argv[count][i] == '-') || (argv[count][i] == '+'))
-		// 	i++;
+		if(counter_strings(argv[count]) == (ERROR))
+			return (ERROR);
 		if(argv[count][i] == '-' && (argv[count][i + 1] == '0'))
 			i++;
-		if(!ft_isnum(argv[count][i]))
+		else if(argv[count][i] == '+' && (argv[count][i + 1] == '0'))
+			i++;
+		if(argv[count][i] && argv[count][i + 1] == '-')
+			return (ERROR);
+		else if(argv[count][i] && argv[count][i + 1] == '+')
+			return (ERROR);
+		if(argv[count][i] == '-' || argv[count][i] == '+')
+			i++;
+		if(ft_isnum(argv[count][i]) == ERROR)
 			return (ERROR);
 		i++;
 	}
 	return 0;
+}
+int counter_strings(char *str)
+{
+	int count;
+
+	count = 0;
+	while (str[count] != '\0')
+	{
+		if((count) == 11)
+			return (ERROR);
+		count++;
+	}
+	return (SUCCESS);
 }

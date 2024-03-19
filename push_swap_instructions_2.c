@@ -6,17 +6,12 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:40:09 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/06 19:00:03 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:46:33 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Esta función rota hacia arriba todos los 
-// elementos de la pila, es decir, el último elemento
-// pasa a ser el primero. Se proporciona un identificador
-// de pila para mostrar mensajes de salida
-// adecuados antes de realizar la rotación.
 void	rra(t_stack **stacks, int num_stack)
 {
 	t_stack	*cont;
@@ -40,33 +35,17 @@ void	rra(t_stack **stacks, int num_stack)
 	*stacks = cont;
 }
 
-// Esta función llama a la función 'rra' para realizar 
-// una rotación hacia la derecha en la pila B.
-// La función 'rra' se encarga de realizar la rotación 
-// hacia la derecha en la pila especificada.
-// Esta función es específica para el caso de la pila B.
 void	rrb(t_stack **stack_b)
 {
 	rra(&*stack_b, STACK_B);
 }
 
-// Esta función realiza una rotación hacia la izquierda 
-// en la pila especificada.
-// Se toma el primer nodo de la pila y se mueve al final, 
-// manteniendo el orden relativo
-// de los demás nodos. Se imprime un mensaje dependiendo 
-// del tipo de pila y la operación realizada.
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	rra(&*stack_a, STACK_S);
 	rra(&*stack_b, ERROR);
 }
 
-// Esta función rota hacia arriba todos los elementos de ambas 
-// pilas, es decir, el último elemento
-// de cada pila pasa a ser el primero. Se proporciona un identificador 
-// de pila para mostrar mensajes de salida
-// adecuados antes de realizar la rotación.
 void	ra(t_stack **stacks, int num_stack)
 {
 	t_stack	*first;
@@ -89,11 +68,6 @@ void	ra(t_stack **stacks, int num_stack)
 	first->next = NULL;
 }
 
-// Esta función rota hacia arriba todos los elementos de la pila B, 
-// es decir, el último elemento
-// pasa a ser el primero en la pila B. Se proporciona un identificador 
-// de pila para mostrar mensajes de salida
-// adecuados antes de realizar la rotación.
 void	rb(t_stack **stack_b)
 {
 	ra(&*stack_b, STACK_B);

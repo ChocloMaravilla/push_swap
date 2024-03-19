@@ -6,27 +6,23 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:23:28 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/15 17:51:16 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:46:41 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Esta función comprueba si el carácter dado es un dígito numérico del 0 al 9.
 int	ft_isnum(int c)
 {
-	return (c >= '0' && c <= '9');
+	if (c >= '0' && c <= '9')
+		return (SUCCESS);
+	else if( c == '-' || c == '+')
+		return(SUCCESS);
+	else
+		return (ERROR);
+	return (0);
 }
 
-// Esta función convierte la cadena de caracteres 
-// dada en un número entero largo.
-// Ignora los espacios en blanco iniciales y luego 
-// procesa los dígitos numéricos
-// hasta que se encuentra un carácter no numérico o se 
-// alcanza el final de la cadena.
-// La función también maneja los signos positivos y 
-// negativos y registra errores
-// mediante el parámetro 'err'.
 int	ft_atoi(const char *str)
 {
 	long		i;
@@ -51,24 +47,18 @@ int	ft_atoi(const char *str)
 		result += str[i] - 48;
 		i++;
 	}
+	if(result > 2147483647)
+		return (ERROR);
 	result *= sign;
 	return (result);
 }
 
-// Esta función verifica si hay duplicados entre los 
-// argumentos proporcionados en la línea de comandos.
-// Utiliza la función ft_atoi_long para convertir los 
-// argumentos en números enteros largos
-// y luego los compara para detectar duplicados. Además, 
-// registra errores de conversión
-// utilizando el parámetro 'num_err'.
 int	ft_isdupli(int argc, char **argv)
 {
 	int	count;
-	int	num_err;
 	int	count2;
-	int	num1;
-	int	num2;
+	long	num1;
+	long	num2;
 
 	count = 1;
 	while (count < argc)
@@ -76,22 +66,19 @@ int	ft_isdupli(int argc, char **argv)
 		count2 = 1;
 		while (argv[count2])
 		{
-			num_err = 0;
 			num1 = ft_atoi(argv[count]);
 			num2 = ft_atoi(argv[count2]);
 			if ((count != count2 && num1 == num2))
 				return (ERROR);
 			count2++;
 		}
+		if(num1 == ERROR)
+			return (ERROR);
 		count++;
 	}
 	return (0);
 }
 
-// Esta función determina si un número en una cadena 
-// de caracteres es positivo o negativo.
-// Modifica el parámetro 'sign' según el signo encontrado 
-// en la posición 'a' de la cadena.
 void	positive_or_negative(const char *str, int *a, int *sign)
 {
 	if (str[*a] == '-')

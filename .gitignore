@@ -6,3 +6,5 @@ checker_Mac
 a.out
 pro_checker
 push_swap
+checker_linux
+checker
