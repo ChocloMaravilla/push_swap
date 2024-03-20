@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 19:52:53 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/19 18:46:57 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:50:41 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,23 @@ void	free_elements_stack(t_stack **stacks)
 
 void	case5_conditions(t_stack **list_a, t_stack **list_b)
 {
-	if ((*list_a)->value > (*list_a)->next->next->next->next->value)
-		ra(list_a, STACK_A);
-	if ((*list_a)->value > (*list_a)->next->next->value)
+	if ((*list_b)->value > (*list_a)->next->next->next->value)
+		{
+			pa(list_a, list_b, STACK_A);
+			ra(list_a, STACK_A);
+		}
+	else if ((*list_b)->value > (*list_a)->next->next->value)
+		{
+			rra(list_a, STACK_A);
+			pa(list_a, list_b, STACK_A);
+			ra(list_a, STACK_A);
+			ra(list_a, STACK_A);
+		}
+	else if ((*list_b)->value > (*list_a)->next->value)
 	{
 		ra(list_a, STACK_A);
-		pb(list_b, list_a);
-		rra(list_a, STACK_A);
-		sa(list_a, STACK_A);
-		if ((*list_a)->next->value > (*list_a)->next->next->value)
-		{
-			ra(list_a, STACK_A);
-			sa(list_a, STACK_A);
-			rra(list_a, STACK_A);
-		}
 		pa(list_a, list_b, STACK_A);
-	}
-	if ((*list_a)->value > (*list_a)->next->value)
 		sa(list_a, STACK_A);
+		rra(list_a, STACK_A);
+	}
 }
