@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:08:02 by ruben             #+#    #+#             */
-/*   Updated: 2024/03/20 20:47:26 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:21:21 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,20 +128,20 @@ void	case5_2(t_stack **stack_a, t_stack **stack_b)
 
 	list_a = *stack_a;
 	list_b = *stack_b;
-	pa(&list_a, &list_b, STACK_A);
-	if (list_a->value > list_a->next->value && \
-		list_a->value < list_a->next->next->value)
-		sa(&list_a, STACK_A);
-	if (list_a->value > list_a->next->next->next->next->value)
+	// pa(&list_a, &list_b, STACK_A);
+	if (list_b->value > list_a->next->next->next->value)
+	{
+		pa(&list_a, &list_b, STACK_A);
 		ra(&list_a, STACK_A);
-	else if (list_a->value > list_a->next->next->next->value)
+	}
+	else if (list_b->value > list_a->next->next->value)
 	{
 		rra(&list_a, STACK_A);
-		sa(&list_a, STACK_A);
+		pa(&list_a, &list_b, STACK_A);
 		ra(&list_a, STACK_A);
 		ra(&list_a, STACK_A);
 	}
-	// case5_conditions(&list_a, &list_b);
+	case5_conditions(&list_a, &list_b);
 	*stack_a = list_a;
 	*stack_b = list_b;
 }
