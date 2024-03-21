@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 20:13:57 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/20 20:47:45 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:50:14 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	free_elements_stack(t_stack **stacks);
 void	positive_or_negative(const char *str, int *a, int *sign);
 void	case5_conditions(t_stack **list_a, t_stack **list_b);
 int		is_char(int count, char **argv);
-int 	counter_strings(char *str);
-//	BORRAR ESTAS FUNCIONES
-void 	print_list(t_stack **list, char *name_list);
+int		counter_strings(char *str);
+int		max_int(long result);
 #endif

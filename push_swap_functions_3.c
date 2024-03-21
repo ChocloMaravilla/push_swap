@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:24:29 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/19 19:10:19 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:39:31 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	fill_lista(int argc, char **argv, t_stack **lista)
 	count = 1;
 	while (count < argc)
 	{
-		if(is_char(count, argv) == ERROR)
+		if (is_char(count, argv) == ERROR)
 			return (ERROR);
 		node = malloc(sizeof(t_stack));
 		if (!node)
@@ -85,41 +85,43 @@ int	its_sorted(t_stack **lista)
 	}
 	return (its_bigger);
 }
-int is_char(int count, char **argv)
+
+int	is_char(int count, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(argv[count][i] == '\0')
+	if (argv[count][i] == '\0')
 		return (ERROR);
 	while (argv[count][i])
 	{
-		if(counter_strings(argv[count]) == (ERROR))
+		if (counter_strings(argv[count]) == (ERROR))
 			return (ERROR);
-		if(argv[count][i] == '-' && (argv[count][i + 1] == '0'))
+		if (argv[count][i] == '-' && (argv[count][i + 1] == '0'))
 			i++;
-		else if(argv[count][i] == '+' && (argv[count][i + 1] == '0'))
+		else if (argv[count][i] == '+' && (argv[count][i + 1] == '0'))
 			i++;
-		if(argv[count][i] && argv[count][i + 1] == '-')
+		if (argv[count][i] && argv[count][i + 1] == '-')
 			return (ERROR);
-		else if(argv[count][i] && argv[count][i + 1] == '+')
+		else if (argv[count][i] && argv[count][i + 1] == '+')
 			return (ERROR);
-		if(argv[count][i] == '-' || argv[count][i] == '+')
+		if (argv[count][i] == '-' || argv[count][i] == '+')
 			i++;
-		if(ft_isnum(argv[count][i]) == ERROR)
+		if (ft_isnum(argv[count][i]) == ERROR)
 			return (ERROR);
 		i++;
 	}
-	return 0;
+	return (0);
 }
-int counter_strings(char *str)
+
+int	counter_strings(char *str)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (str[count] != '\0')
 	{
-		if((count) == 11)
+		if ((count) == 11)
 			return (ERROR);
 		count++;
 	}

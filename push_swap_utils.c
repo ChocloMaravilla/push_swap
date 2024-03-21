@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:23:28 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/19 18:46:41 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:47:44 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	ft_isnum(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (SUCCESS);
-	else if( c == '-' || c == '+')
-		return(SUCCESS);
+	else if (c == '-' || c == '+')
+		return (SUCCESS);
 	else
 		return (ERROR);
 	return (0);
@@ -45,18 +45,17 @@ int	ft_atoi(const char *str)
 	{
 		result *= 10;
 		result += str[i] - 48;
-		i++;
+		(i)++;
 	}
-	if(result > 2147483647)
+	if (max_int(result) == ERROR)
 		return (ERROR);
-	result *= sign;
-	return (result);
+	return (result *= sign);
 }
 
 int	ft_isdupli(int argc, char **argv)
 {
-	int	count;
-	int	count2;
+	int		count;
+	int		count2;
 	long	num1;
 	long	num2;
 
@@ -72,7 +71,7 @@ int	ft_isdupli(int argc, char **argv)
 				return (ERROR);
 			count2++;
 		}
-		if(num1 == ERROR)
+		if (num1 == ERROR)
 			return (ERROR);
 		count++;
 	}
@@ -88,4 +87,11 @@ void	positive_or_negative(const char *str, int *a, int *sign)
 	}
 	else if (str[*a] == '+')
 		a++;
+}
+
+int	max_int(long result)
+{
+	if (result > 2147483647)
+		return (ERROR);
+	return (result);
 }

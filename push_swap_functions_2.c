@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 19:52:53 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/20 21:21:52 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:45:20 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	free_elements_stack(t_stack **stacks)
 
 void	case5_conditions(t_stack **list_a, t_stack **list_b)
 {
-	
 	if ((*list_b)->value > (*list_a)->next->value)
 	{
 		ra(list_a, STACK_A);
@@ -76,11 +75,11 @@ void	case5_conditions(t_stack **list_a, t_stack **list_b)
 		sa(list_a, STACK_A);
 		rra(list_a, STACK_A);
 	}
-	else if((*list_b)->value > (*list_a)->value)
+	else if ((*list_b)->value > (*list_a)->value)
 	{
 		pa(list_a, list_b, STACK_A);
 		sa(list_a, STACK_A);
 	}
-	else 
+	else
 		pa(list_a, list_b, STACK_A);
 }

@@ -6,17 +6,12 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:08:02 by ruben             #+#    #+#             */
-/*   Updated: 2024/03/20 21:21:21 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:49:38 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Esta función implementa casos especiales de algoritmos
-// para tamaños específicos de pilas.
-// Se utiliza para optimizar el rendimiento en 
-// situaciones donde la cantidad de elementos en las pilas
-// es pequeña y se puede aplicar una estrategia más eficiente.
 void	algorithm_specialcase(t_stack **stack_a, t_stack **stack_b, int argc)
 {
 	if (argc == 3)
@@ -32,11 +27,6 @@ void	algorithm_specialcase(t_stack **stack_a, t_stack **stack_b, int argc)
 		case5(stack_a, stack_b);
 }
 
-// Esta función implementa un caso especial de 
-// algoritmo diseñado para ordenar
-// tres elementos en la pila A de manera eficiente. 
-// Se utilizan operaciones específicas
-// para minimizar el número de movimientos necesarios.
 void	case3(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*list_a;
@@ -66,11 +56,6 @@ void	case3(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = list_a;
 }
 
-// Esta función implementa un caso especial 
-// de algoritmo diseñado para ordenar
-// cuatro elementos en la pila A de manera eficiente. 
-// Se utilizan operaciones específicas
-// para minimizar el número de movimientos necesarios.
 void	case4(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*list_a;
@@ -97,11 +82,6 @@ void	case4(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = list_b;
 }
 
-// Esta función implementa un caso especial de 
-// algoritmo diseñado para ordenar
-// cinco elementos en la pila A de manera eficiente. 
-// Se utilizan operaciones específicas
-// para minimizar el número de movimientos necesarios.
 void	case5(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*list_a;
@@ -116,11 +96,6 @@ void	case5(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = list_b;
 }
 
-// Esta función implementa la segunda etapa de un 
-// caso especial de algoritmo diseñado para ordenar
-// cinco elementos en la pila A de manera eficiente. 
-// Se utilizan operaciones específicas
-// para minimizar el número de movimientos necesarios.
 void	case5_2(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*list_a;
@@ -128,7 +103,6 @@ void	case5_2(t_stack **stack_a, t_stack **stack_b)
 
 	list_a = *stack_a;
 	list_b = *stack_b;
-	// pa(&list_a, &list_b, STACK_A);
 	if (list_b->value > list_a->next->next->next->value)
 	{
 		pa(&list_a, &list_b, STACK_A);
