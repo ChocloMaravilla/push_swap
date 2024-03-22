@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:08:02 by ruben             #+#    #+#             */
-/*   Updated: 2024/03/21 18:49:38 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/22 22:10:09 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ void	algorithm_specialcase(t_stack **stack_a, t_stack **stack_b, int argc)
 	}
 	if (argc == 4)
 		case3(stack_a, stack_b);
-	else if (argc == 5)
-		case4(stack_a, stack_b);
-	else if (argc == 6)
-		case5(stack_a, stack_b);
+	else if (argc == 5 || argc == 6)
+		case5(&(*stack_a), &(*stack_b), argc);
 }
 
 void	case3(t_stack **stack_a, t_stack **stack_b)
@@ -56,66 +54,30 @@ void	case3(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = list_a;
 }
 
-void	case4(t_stack **stack_a, t_stack **stack_b)
+void	case5(t_stack **list_a, t_stack **list_b, int argc)
 {
-	t_stack	*list_a;
-	t_stack	*list_b;
+	int count;
 
-	list_a = *stack_a;
-	list_b = *stack_b;
-	pb(&list_b, &list_a);
-	case3(&list_a, &list_b);
-	pa(&list_a, &list_b, STACK_A);
-	if (list_a->value > list_a->next->value && \
-		list_a->value < list_a->next->next->value)
-		sa(&list_a, STACK_A);
-	if (list_a->value > list_a->next->next->next->value)
-		ra(&list_a, STACK_A);
-	else if (list_a->value > list_a->next->next->value)
+	count = 1;
+	while(count < argc)
 	{
-		rra(&list_a, STACK_A);
-		sa(&list_a, STACK_A);
-		ra(&list_a, STACK_A);
-		ra(&list_a, STACK_A);
+		if ((*list_a)->index == 0 || (*list_a)->index == 1)
+			pb(list_b, list_a);
+		else
+			ra(list_a, STACK_A);
+		count++;
 	}
-	*stack_a = list_a;
-	*stack_b = list_b;
-}
-
-void	case5(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*list_a;
-	t_stack	*list_b;
-
-	list_a = *stack_a;
-	list_b = *stack_b;
-	pb(&list_b, &list_a);
-	case4(&list_a, &list_b);
-	case5_2(&list_a, &list_b);
-	*stack_a = list_a;
-	*stack_b = list_b;
-}
-
-void	case5_2(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*list_a;
-	t_stack	*list_b;
-
-	list_a = *stack_a;
-	list_b = *stack_b;
-	if (list_b->value > list_a->next->next->next->value)
+	if ((*list_b)->index < (*list_b)->next->index)
+		sb(list_b);
+	if (argc == 6)
+		case3(&(*list_a), &(*list_b));
+	else if (argc == 5)
 	{
-		pa(&list_a, &list_b, STACK_A);
-		ra(&list_a, STACK_A);
+		if((*list_a)->index > (*list_a)->next->index)
+			sa(&(*list_a), STACK_A);
 	}
-	else if (list_b->value > list_a->next->next->value)
+	while((*list_b) != NULL)
 	{
-		rra(&list_a, STACK_A);
-		pa(&list_a, &list_b, STACK_A);
-		ra(&list_a, STACK_A);
-		ra(&list_a, STACK_A);
+		pa(&(*list_a) ,&(*list_b), STACK_A);
 	}
-	case5_conditions(&list_a, &list_b);
-	*stack_a = list_a;
-	*stack_b = list_b;
 }

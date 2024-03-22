@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:00:19 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/21 18:45:03 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/22 22:51:01 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,14 @@ void	*push_swap(int argc, char *argv[])
 	if (boolean == ERROR)
 	{
 		write(2, "Error\n", 6);
+		free_elements_stack(&first_node_a);
 		return (NULL);
 	}
 	else if (boolean == EQUAL)
+	{
+		free_elements_stack(&first_node_a);
 		return (NULL);
+	}
 	fill_index(first_node_a);
 	fill_index(first_node_b);
 	radix_algorithm(&first_node_a, &first_node_b, argc - 1, argc);
@@ -79,4 +83,14 @@ int	main(int argc, char **argv )
 {
 	push_swap(argc, argv);
 	return (0);
+}
+
+void print_list(t_stack **list, char *name_list)
+{
+	t_stack *lists = *list;
+	while (lists != NULL)
+	{
+		printf("\n%s(%i): %i\n", name_list, lists->index,lists->value);
+		lists = lists->next;
+	}
 }
