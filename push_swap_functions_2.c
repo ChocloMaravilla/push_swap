@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 19:52:53 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/23 16:42:40 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/23 20:06:48 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,4 @@ int	length_stack(t_stack **stacks)
 		count++;
 	}
 	return (count);
-}
-
-void	free_elements_stack(t_stack **stacks)
-{
-	t_stack	*last;
-	
-	while ((*stacks) != NULL)
-	{
-		last = (*stacks)->next;
-		free(*stacks);
-		*stacks = last;
-	}
 }

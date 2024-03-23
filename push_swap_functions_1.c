@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:08:02 by ruben             #+#    #+#             */
-/*   Updated: 2024/03/22 22:10:09 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/23 20:08:14 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ void	case3(t_stack **stack_a, t_stack **stack_b)
 
 void	case5(t_stack **list_a, t_stack **list_b, int argc)
 {
-	int count;
+	int	count;
 
 	count = 1;
-	while(count < argc)
+	while (count < argc)
 	{
 		if ((*list_a)->index == 0 || (*list_a)->index == 1)
 			pb(list_b, list_a);
@@ -68,16 +68,14 @@ void	case5(t_stack **list_a, t_stack **list_b, int argc)
 		count++;
 	}
 	if ((*list_b)->index < (*list_b)->next->index)
-		sb(list_b);
+		sb (list_b);
 	if (argc == 6)
 		case3(&(*list_a), &(*list_b));
 	else if (argc == 5)
 	{
-		if((*list_a)->index > (*list_a)->next->index)
-			sa(&(*list_a), STACK_A);
+		if ((*list_a)->index > (*list_a)->next->index)
+			sa (&(*list_a), STACK_A);
 	}
-	while((*list_b) != NULL)
-	{
-		pa(&(*list_a) ,&(*list_b), STACK_A);
-	}
+	while ((*list_b) != NULL)
+		pa (&(*list_a), &(*list_b), STACK_A);
 }
