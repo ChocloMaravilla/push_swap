@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:24:29 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/22 22:53:16 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/23 18:03:21 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ int	fill_lista(int argc, char **argv, t_stack **lista)
 		if (!node)
 			return (ERROR);
 		if (ft_isdupli(argc, argv) == ERROR)
-			{	free_elements_stack(lista);
-				return (ERROR);
-			}
+		{
+			free(node);
+			return (ERROR);
+		}
 		if (creation_node(lista, node, *lista) == ERROR)
 			return (ERROR);
 		parse_stack(node, count, argv);

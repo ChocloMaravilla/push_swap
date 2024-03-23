@@ -6,7 +6,7 @@
 /*   By: rmedina- <rmedina-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:00:19 by rmedina-          #+#    #+#             */
-/*   Updated: 2024/03/22 22:51:01 by rmedina-         ###   ########.fr       */
+/*   Updated: 2024/03/23 18:02:29 by rmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,22 @@ void	*push_swap(int argc, char *argv[])
 	if (boolean == ERROR)
 	{
 		write(2, "Error\n", 6);
-		free_elements_stack(&first_node_a);
-		return (NULL);
+		// free_elements_stack(&first_node_a);
+		// return (NULL);
+		exit(0);
 	}
 	else if (boolean == EQUAL)
 	{
-		free_elements_stack(&first_node_a);
-		return (NULL);
+		// free_elements_stack(&first_node_a);
+		// return (0);
+		exit(0);
 	}
 	fill_index(first_node_a);
 	fill_index(first_node_b);
 	radix_algorithm(&first_node_a, &first_node_b, argc - 1, argc);
-	free_elements_stack(&first_node_a);
-	return (NULL);
+	// free_elements_stack(&first_node_a);
+	// return (NULL);
+	exit(0);
 }
 
 int	main(int argc, char **argv )
